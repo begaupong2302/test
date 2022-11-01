@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import static statistics.Date.exp;
 
 /**
@@ -22,17 +23,16 @@ public class StatisticsJFrame extends javax.swing.JFrame {
      */
     public StatisticsJFrame() {
         initComponents();
-        initComponents1();
         this.setHumanToTable();
         this.setTable();
     }
     
     public void setHumanToTable(){
-        
+        // dung sau
     }
     
     public void setTable(){
-        
+        // dung sau
     }
 
     /**
@@ -42,11 +42,6 @@ public class StatisticsJFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-    private void initComponents1(){
-        productTable = new rojeru_san.complementos.RSTableMetro();
-        
-
-    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -79,10 +74,7 @@ public class StatisticsJFrame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -147,6 +139,8 @@ public class StatisticsJFrame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
         int age = Integer.valueOf(this.jTextField1.getText());
         String sex = this.jTextField2.getText();
         String z = this.jTextField3.getText();
@@ -154,7 +148,7 @@ public class StatisticsJFrame extends javax.swing.JFrame {
         Date datez = new Date(Integer.valueOf(date[0]),Integer.valueOf(date[1]), Integer.valueOf(date[2]) );
         for (int i = 0; i<humanList.size(); i++){
             if (age == humanList.get(i).Age && sex.equals(humanList.get(i).Sex) && exp(datez, humanList.get(i).ArriveDate) == 1 && exp(datez, humanList.get(i).LeftDate) == -1 ){
-                
+                model.addRow(new Object[]{humanList.get(i).Name});
             }
         }
     }//GEN-LAST:event_jButton1MouseClicked
